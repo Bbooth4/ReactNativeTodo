@@ -8,8 +8,8 @@ class TaskRow extends Component {
 
   render() {
     return (
-      <View stlye={ styles.container }>
-        <Text>{ this.props.todo.task }</Text>
+      <View style={ styles.container }>
+        <Text style={ styles.label }>{ this.props.todo.task }</Text>
       </View>
     );
   }
@@ -32,7 +32,13 @@ const styles = StyleSheet.create({
     marginBottom: 20, 
     marginLeft: 20, 
     marginRight: 20,
+    padding: 20,
+    borderRadius: 5,
   },
+  label: {
+    fontSize: 20, 
+    fontWeight: '300',
+  }
 });
 
 export default TaskRow;

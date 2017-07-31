@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, View, ListView } from 'react-native';
+import { StyleSheet, View, Text, ListView, TouchableHighlight } from 'react-native';
 import TaskRow from './TaskRow.js'
 
 class TaskList extends Component {
@@ -24,11 +24,21 @@ class TaskList extends Component {
 
   render() {
     return (
-      <View >
+      <View>
         <ListView
           dataSource={ this.state.dataSource }
           renderRow={ this.renderRow }
         />
+        <TouchableHighlight
+          style={ styles.button }
+          onPress={ this.props.clickedButton }
+        >
+          <Text
+            style={ styles.buttonText }
+          >
+            Button
+          </Text>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -36,6 +46,24 @@ class TaskList extends Component {
 
 TaskList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.object).isRequired,
+  // clickedButton: PropTypes.func.isRequired,
 }
+
+const styles = StyleSheet.create({
+  button: {
+    height: 60,
+    borderColor: '#fff',
+    borderWidth: 2,
+    backgroundColor: '#333',
+    margin: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fafafa',
+    fontSize: 20,
+    fontWeight: '600',
+  }
+});
 
 export default TaskList;
